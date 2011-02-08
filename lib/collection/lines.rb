@@ -24,7 +24,7 @@ module Detective
       end
       
       def save!
-        sort_by { |line| line.line_number }.each(&:save!)
+        sort_by { |line| line.line_number }.reverse.each(&:save!)
       end
       
       def to_s
