@@ -22,7 +22,7 @@ module Detective
       end
       
       def match_data
-        pattern.each do |p|
+        attributes[:pattern].each do |p|
           if m = self.match(p)
             return m
           end

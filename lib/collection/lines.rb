@@ -24,7 +24,7 @@ module Detective
       end
     
       def to_s
-        map { |line| line.inspect }.join("\n")
+        map { |line| (line.changed? ? '[ ] ' : '[C] ') + line.inspect }.join("\n")
       end
       alias inspect to_s
     end
