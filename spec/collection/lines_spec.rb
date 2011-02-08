@@ -7,7 +7,7 @@ describe Detective::Collection::Files do
   end
   
   def numbered_lines
-    lines = text_files(:only => /lines/).collect(/^.*(\d+\.)(.+)/)
+    text_files(:only => /lines/).collect(/^.*(\d+\.)(.+)/)
   end
   
   describe "#initialize" do
@@ -33,7 +33,7 @@ describe Detective::Collection::Files do
         nr = match.match(/^\d+/)[0].to_i
         'X' * nr + " #{match}"
       }
-      puts new_lines.inspect
+      #new_lines.save!
     end
   end
   

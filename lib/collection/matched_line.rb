@@ -37,6 +37,17 @@ module Detective
           super
         end
       end
+      
+      def save!
+        all_lines = File.open(file, 'r') { |f| f.readlines }
+        index = line_number - 1
+        if original == all_lines[index]
+          all_lines[index] = self.to_s
+        else
+          raise "File seems modified: #{file}"
+        end
+        File.open(file, 'w') {|f| f.write(all_lines) }
+      end
     end
   end
 end

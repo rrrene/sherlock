@@ -12,7 +12,7 @@
 # DONE: Methoden wie 'first', '+', '-' etc. für LineCollection adaptieren.
 
 
-%w(collection latex).each do |_module|
+%w(collection core_ext latex).each do |_module|
   require File.join(File.dirname(__FILE__), _module)
 end
 
