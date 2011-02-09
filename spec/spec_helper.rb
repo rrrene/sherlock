@@ -12,9 +12,6 @@ require 'fileutils'
 def rebuild_test_data_dir!
   FileUtils.rm_rf(test_data_dir)
   FileUtils.mkdir_p(test_data_dir)
-  puts __FILE__
-  puts original_test_data_dir
-  puts test_data_dir
   FileUtils.cp_r(original_test_data_dir, tmp_dir)
 end
 
