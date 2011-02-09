@@ -21,6 +21,10 @@ module Detective
         attributes[:original] != self
       end
       
+      def gsub(*args, &block)
+        self.class.new(super, attributes)
+      end
+      
       def match_data
         attributes[:pattern].each do |p|
           if m = self.match(p)

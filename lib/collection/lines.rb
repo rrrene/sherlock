@@ -6,10 +6,7 @@ module Detective
       # Executes gsub on all lines in the collection and returns
       # the modified collection.
       def gsub(*args, &block)
-        arr = map { |line|
-          str = line.gsub(*args, &block)
-          MatchedLine.new(str, line.attributes)
-        }
+        arr = map { |line| line.gsub(*args, &block) }
         new(arr)
       end
     
