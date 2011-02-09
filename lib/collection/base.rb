@@ -3,7 +3,7 @@
 module Detective
   module Collection
     class Base < Array
-      def initialize(arr, opts)
+      def initialize(arr = [], opts = {})
         super(0)
         self.concat filter_array_by_options(arr, opts)
       end
@@ -30,7 +30,7 @@ module Detective
       alias filter select_items_matching
   
       def [](value, *args)
-        if value.is_a?(Regexp)
+        if [String, Regexp, Array, Hash].include?(value.class) #value.is_a?(Regexp)
           filter(value, *args)
         else
           super(value)
