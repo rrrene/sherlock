@@ -19,20 +19,20 @@ describe Detective::Collection::Files do
   describe "#filter" do
     it "filters a collection of lines" do
       lines = numbered_lines
-      count = lines.size
       new_lines = lines.filter(:except => /^\d\./)
-      count.should be > new_lines.count
+      lines.count.should be > new_lines.count
     end
   end
   
   describe "#gsub" do
-    it "filters a collection of lines" do
+    it "modifies a collection of lines" do
       lines = numbered_lines
-      new_lines = lines.gsub(/^(.*)(\d+)(\..+)/) { |match|
-        nr = match.match(/^\d+/)[0].to_i
-        'X' * nr + " #{match}"
-      }
-      #new_lines.save!
+      new_lines = lines.gsub(/^(.*)(\d+)(\..+)/) do |match|
+        "X #{match}"
+      end
+      new_lines.each do |line|
+        line.changed?.should == true
+      end
     end
   end
   
