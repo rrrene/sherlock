@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'detective'
 
 describe Detective do
   describe "#investigate" do
