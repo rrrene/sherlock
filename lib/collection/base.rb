@@ -3,6 +3,11 @@
 module Detective
   module Collection
     class Base < Array
+      def initialize(arr, opts)
+        super(0)
+        self.concat filter_array_by_options(arr, opts)
+      end
+      
       # Returns the first value of the collection (matching the value, if given).
       def first(*value)
         item = if value.empty?

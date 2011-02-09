@@ -19,14 +19,7 @@ module Detective
           end
         end
         opts = {:glob => '*'}.merge(opts)
-    
-        super(0)
-        arr = opts[:arr] || Dir[opts[:glob]]
-        arr = filter_array_by_options(arr, opts)
-        self.concat arr
-
-        #puts "new FileCollection object:"
-        #pp opts
+        super(opts[:arr] || Dir[opts[:glob]], opts)
       end
   
       # Returns all the lines matching the given pattern.
