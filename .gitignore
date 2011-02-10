@@ -1,3 +1,4 @@
 .eprj
 tmp
 Gemfile.lock
+*.gem
