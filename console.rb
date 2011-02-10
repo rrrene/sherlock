@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby -wKU
 
-require File.join(File.dirname(__FILE__), 'lib', 'detective')
+require File.join(File.dirname(__FILE__), 'lib', 'sherlock')
 
-include Detective
-include Detective::LaTex
+include Sherlock
+include Sherlock::LaTex
 
 require 'irb'
 require 'irb/completion'

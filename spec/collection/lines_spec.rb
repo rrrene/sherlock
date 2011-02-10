@@ -1,10 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Detective::Collection::Files do
-  def text_files(opts = {})
-    Detective::Collection::Files.new('**/*.txt', opts)
-  end
-  
+describe Sherlock::Collection::Files do
   def numbered_lines
     text_files(:only => /lines/).collect(/^.*(\d+\.)(.+)/)
   end

@@ -1,14 +1,14 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe Detective do
+describe Sherlock do
   describe "#investigate" do
     it "creates a collection of all text files" do
-      files = Detective.investigate('**/*.txt')
+      files = Sherlock.investigate('**/*.txt')
       files.should_not be_empty
     end
     
     it "creates an empty collection" do
-      files = Detective.investigate('**/not-there')
+      files = Sherlock.investigate('**/not-there')
       files.should be_empty
     end
   end

@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby -wKU
 
-module Detective
+module Sherlock
   module LaTex
     class << self
       def included(base)
         base.__send__(:include, InstanceMethods)
-        Detective::Collection::Files.__send__(:include, Collection::Files::InstanceMethods)
+        Sherlock::Collection::Files.__send__(:include, Collection::Files::InstanceMethods)
       end
     end
     

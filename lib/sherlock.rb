@@ -7,7 +7,7 @@
   require File.join(File.dirname(__FILE__), _module)
 end
 
-module Detective
+module Sherlock
   module VERSION #:nodoc:
     MAJOR = 0
     MINOR = 1
@@ -18,7 +18,7 @@ module Detective
   
   module InstanceMethods
     def collect_files_matching(*args)
-      Detective::Collection::Files.new(*args)
+      Sherlock::Collection::Files.new(*args)
     end
     alias investigate collect_files_matching
   end

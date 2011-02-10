@@ -1,4 +1,6 @@
 .eprj
+.idea
+*.iml
 tmp
 Gemfile.lock
 *.gem

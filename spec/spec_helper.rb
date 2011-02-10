@@ -2,12 +2,16 @@
 
 $:.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 
-require 'detective'
+require 'sherlock'
 
 require 'rubygems'
 require 'rspec'
 
 require 'fileutils'
+
+def text_files(opts = {})
+  Sherlock::Collection::Files.new('**/*.txt', opts)
+end
 
 def rebuild_test_data_dir!
   FileUtils.rm_rf(test_data_dir)

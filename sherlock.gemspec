@@ -1,13 +1,13 @@
 $:.unshift('lib')
-require 'detective'
+require 'sherlock'
 
 Gem::Specification.new do |s|
   s.author = "René Föhring"
   s.email = 'rf@bamaru.de'
   s.homepage = "http://bamaru.com"
 
-  s.name = 'detective'
-  s.version = Detective::VERSION::STRING
+  s.name = 'sherlock'
+  s.version = Sherlock::VERSION::STRING
   s.platform = Gem::Platform::RUBY
   s.summary = "A library for filtering lists of files and performing actions on their content."
   s.description = "A library for filtering lists of files and performing actions on their content."

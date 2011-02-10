@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby -wKU
 
-module Detective
+module Sherlock
   module Collection
     
     # ==== Attributes

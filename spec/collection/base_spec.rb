@@ -1,9 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Detective::Collection::Base do
+describe Sherlock::Collection::Base do
   def new_collection(arr = nil, opts = {})
     arr ||= %w(eins zwei drei vier fünf)
-    Detective::Collection::Base.new(arr, opts)
+    Sherlock::Collection::Base.new(arr, opts)
   end
   
   def filter_arguments
@@ -18,7 +18,7 @@ describe Detective::Collection::Base do
   
   describe "#initialize" do
     it "creates an empty collection without arguments" do
-      empty_collection = Detective::Collection::Base.new
+      empty_collection = Sherlock::Collection::Base.new
       empty_collection.should be_empty
     end
     it "creates a full collection for a given array" do
