@@ -17,14 +17,14 @@ describe Sherlock::Collection::Files do
     end
   end
   
-  describe "#collect" do
+  describe "#lines" do
     it "collects all lines beginning with a number and a dot." do
-      lines = text_files(:only => /lines/).collect(/^\d+\./)
+      lines = text_files(:only => /lines/).lines(/^\d+\./)
       lines.should_not be_empty
     end
     
     it "tries to collect all lines beginning with a number and a dot." do
-      lines = text_files(:except => /lines/).collect(/^\d+\./)
+      lines = text_files(:except => /lines/).lines(/^\d+\./)
       lines.should be_empty
     end
   end
