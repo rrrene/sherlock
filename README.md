@@ -20,7 +20,7 @@ And you can filter this collection, just like with Dir:
     
     # Select all tex files beginning with 'chapter' except chapter 0
     Dir['**/*.tex'].select { |f| f =~ /chapter_/ }.reject { |f| f == 'chapter_0' }
-    Sherlock['**/*.tex', {:only => /chapter_/, :except => 'chapter_0'}]
+    Sherlock['**/*.tex', :only => /chapter_/, :except => 'chapter_0']
 
 But you can also easily filter file collections by their content and report/modify/save specific lines of text.
     
@@ -31,7 +31,7 @@ But you can also easily filter file collections by their content and report/modi
 
 To filter this set of files further, use the options parameter:
   
-    Sherlock['**/*.tex', {:only => /^\d+/, :except => /table_of_contents/})
+    Sherlock['**/*.tex', :only => /^\d+/, :except => /table_of_contents/)
     
 or you can use the filter method:
   
