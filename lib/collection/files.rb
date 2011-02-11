@@ -5,13 +5,14 @@ module Sherlock
     class Files < Base
   
       def initialize(glob_or_regex, opts = {})
-        if glob_or_regex.is_a?(Hash)
+        case glob_or_regex
+        when Hash
           opts = glob_or_regex
-        elsif glob_or_regex.is_a?(Array)
+        when Array
           opts[:arr] = glob_or_regex
-        elsif glob_or_regex.is_a?(String)
+        when String
           opts[:glob] = glob_or_regex
-        elsif glob_or_regex.is_a?(Regexp)
+        when Regexp
           if opts[:only]
             raise "Cannot use regexp and :only-option at the same time."
           else
