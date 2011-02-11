@@ -26,12 +26,7 @@ module Sherlock
       end
       
       def match_data
-        attributes[:pattern].each do |p|
-          if m = self.match(p)
-            return m
-          end
-        end
-        nil
+        attributes[:pattern].detect { |p| match(p) }
       end
       
       def method_missing(m)
