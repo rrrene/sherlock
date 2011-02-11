@@ -97,3 +97,4 @@ Values provided to these options can be a Regexp, a String or an Array of Regexp
 ## License
 
 Released under the MIT License. See the LICENSE file for further details.
+
