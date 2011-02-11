@@ -17,11 +17,23 @@ Sherlock is a ruby library that allows you to first filter lists of files based 
 ## Usage
 
 The Sherlock brackets accessor takes a glob as first argument, just like Dir:
-  
+    
+    # Select all tex files
     Dir['**/*.tex']
     Sherlock['**/*.tex']
 
-### List filtering
+And you can filter this collection, just like with Dir:
+    
+    # Select all tex files beginning with 'chapter' except chapter 0
+    Dir['**/*.tex'].select { |f| f =~ /chapter_/ }.reject { |f| f == 'chapter_0' }
+    Sherlock['**/*.tex', {:only => /chapter_/, :except => 'chapter_0'}]
+
+But you can also easily filter file collections by their content and report/modify/save specific lines of text.
+    
+    # Select all ruby files, comment all lines using 'puts', (except those lines that are already commented) and save the changes.
+    Sherlock['**/*.rb'].collect(/puts/).filter(:except => /^#/).gsub(/.+/) { |line| "# #{line}" }.save!
+
+## Collecting files
 
 To filter this set of files further, use the options parameter:
   
@@ -49,7 +61,7 @@ The containing and not_containing methods can be used to filter file collections
   
     Sherlock['app/**/*.rb'].containing('TODO:')
 
-### Collecting lines of text
+## Collecting lines
 
 Like the namesake of this module, we often want to dig deeper and investigate further:
   
@@ -66,7 +78,7 @@ To get the matched part of the line, you can use the matches method:
     Sherlock['**/*.tex'].collect(/% TODO:(.+)/).matches
     # => [['improve headline'], ['write conclusion'], ['get an A']]
     
-### Modifying lines of text
+## Modifying lines
 
 Finally, you want to be able to not only use your findings, but change the content of the collected lines.
 
@@ -76,6 +88,11 @@ You can using the gsub and save! method:
     
 gsub and save! work both on collections of lines as well as individual line objects!
 
+## Filtering in general
+
+All filtering methods, such as filter, first, containing and not_containing, accept the :only and :except options (or a single argument which is interpreted as :only option).
+
+Values provided to these options can be a Regexp, a String or an Array of Regexps and Strings._
 
 ## License
 
