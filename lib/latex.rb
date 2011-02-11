@@ -1,7 +1,16 @@
 #!/usr/bin/env ruby -wKU
 
+# this is still very experimental
+#
+# I want to be able to perform large LaTeX document analysis in an easy readable way
+# e.g. 
+#   Sherlock[:tex].inputs(:except => 'generated') 
+#     # => all lines with input directives, except the ones containing 'generated'
+#   Sherlock[:tex].macros(:emph)
+#     # => all lines containing the \emph{} macro
+
 module Sherlock
-  module LaTex
+  module LaTex #:nodoc:
     class << self
       def included(base)
         base.__send__(:include, InstanceMethods)

@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby -wKU
 
 # TODO: Output-Methoden für File- und Line-Collections, Tabellen, success & failure inkl. optionaler Colorierung.
-# TODO: vielleicht LaTex shortcuts à la tex_files.inputs(:only => 'generated/schema')
 
 %w(collection core_ext latex).each do |_module|
   require File.join(File.dirname(__FILE__), _module)
