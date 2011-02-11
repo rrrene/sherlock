@@ -8,7 +8,9 @@
 #     # => all lines with input directives, except the ones containing 'generated'
 #   Sherlock[:tex].macros(:emph)
 #     # => all lines containing the \emph{} macro
-
+#
+#  Maybe even environments could be analysed (e.g. figure and tabular)
+#
 module Sherlock
   module LaTex #:nodoc:
     class << self
