@@ -62,10 +62,7 @@ module Sherlock
       end
 
       def matching?(str, string_or_regexp_or_array)
-        [string_or_regexp_or_array].flatten.each { |pattern|
-          return true if str.match(pattern)
-        }
-        false
+        [string_or_regexp_or_array].flatten.detect { |pattern| str.match(pattern) }
       end
     
       def new(*args)
