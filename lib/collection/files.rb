@@ -38,6 +38,7 @@ module Sherlock
       end
       alias old_collect collect
       alias collect collect_lines_matching
+      alias lines collect_lines_matching
       
       # Returns a FileCollection with all files containing the
       # given content / matching the given pattern.
