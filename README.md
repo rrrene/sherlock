@@ -2,7 +2,7 @@
 
 ## Description
 
-Sherlock provides an easy way to filter collections of files and analyse/modify/save their content using ruby.
+Sherlock provides an easy way to filter collections of files and report/modify/save specific lines using ruby.
 
 ## Installation
 
@@ -86,7 +86,13 @@ gsub and save! work both on collections of lines as well as individual line obje
 
 All filtering methods, such as filter, first, containing and not_containing, accept the :only and :except options (or a single argument which is interpreted as :only option).
 
-Values provided to these options can be a Regexp, a String or an Array of Regexps and Strings._
+    files = Sherlock['**/*.rb']
+    files.filter(:only => 'controllers') == files.filter('controllers') == files.filter(/controllers/)
+    files.filter(/(models|controllers)/) == files.filter(%w{models controllers})
+
+Values provided to these options can be a Regexp, a String or an Array of Regexps and Strings.
+
+
 
 ## License
 
