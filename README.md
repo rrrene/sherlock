@@ -2,17 +2,11 @@
 
 ## Description
 
-Sherlock is a ruby library that allows you to first filter lists of files based on their name and content and then investigate those files by collecting lines that match a given pattern.
-    
-    # Collect all todos from a project
-    Sherlock['**/*'].collect(/TODO:(.+)/).matches
-    
-    # Select all latex files which don't include other files
-    Sherlock['**/*.tex'].not_containing(['\include', '\input'])
-    
+Sherlock provides an easy way to filter collections of files and analyse/modify/save their content using ruby.
+
 ## Installation
 
-  gem install sherlock
+  $ gem install sherlock
   
 ## Usage
 
@@ -30,7 +24,7 @@ And you can filter this collection, just like with Dir:
 
 But you can also easily filter file collections by their content and report/modify/save specific lines of text.
     
-    # Select all ruby files, comment all lines using 'puts', (except those lines that are already commented) and save the changes.
+    # Select all ruby files, comment all lines using 'puts' (except those lines that are already commented) and save the changes.
     Sherlock['**/*.rb'].collect(/puts/).filter(:except => /^#/).gsub(/.+/) { |line| "# #{line}" }.save!
 
 ## Collecting files
