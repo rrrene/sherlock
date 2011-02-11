@@ -90,7 +90,7 @@ All filtering methods, such as filter, first, containing and not_containing, acc
     files.filter(:only => 'controllers') == files.filter('controllers')
     files.filter(/(models|controllers)/) == files.filter(%w{models controllers})
 
-Values provided to these options can be a Regexp, a String or an Array of Regexps and Strings.
+Values provided to these options can be a Regexp, a String or an Array of Regexps/Strings.
 
 
 
