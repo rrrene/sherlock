@@ -44,20 +44,24 @@ module Sherlock
       # Returns a FileCollection with all files containing the
       # given content / matching the given pattern.
       def select_files_containing(pattern)
-        pattern = [pattern].flatten
-        arr = select { |f| matching?(File.read(f), pattern) }
-        new(arr)
+        select_files(pattern, :select)
       end
       alias containing select_files_containing
 
       # Returns a FileCollection with all files not containing the
       # given content / matching the given pattern.
       def select_files_not_containing(pattern)
-        pattern = [pattern].flatten
-        arr = select { |f| !matching?(File.read(f), pattern) }
-        new(arr)
+        select_files(pattern, :reject)
       end
       alias not_containing select_files_not_containing
+
+      private
+
+      def select_files(pattern, method)
+        pattern = [pattern].flatten
+        arr = send(method) { |f| matching?(File.read(f), pattern) }
+        new(arr)
+      end
     end
   end
 end
