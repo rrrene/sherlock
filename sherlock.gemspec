@@ -4,7 +4,7 @@ require 'sherlock'
 Gem::Specification.new do |s|
   s.author = "René Föhring"
   s.email = 'rf@bamaru.de'
-  s.homepage = "http://bamaru.com"
+  s.homepage = "http://github.com/rrrene/sherlock"
 
   s.name = 'sherlock'
   s.version = Sherlock::VERSION::STRING
