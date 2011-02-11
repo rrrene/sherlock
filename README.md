@@ -25,7 +25,7 @@ And you can filter this collection, just like with Dir:
 But you can also easily filter file collections by their content and report/modify/save specific lines of text.
     
     # Select all ruby files, comment all lines using 'puts' (except those lines that are already commented) and save the changes.
-    Sherlock['**/*.rb'].collect(/puts/).filter(:except => /^#/).gsub(/.+/) { |line| "# #{line}" }.save!
+    Sherlock['**/*.rb'].lines(/puts/).filter(:except => /^#/).gsub(/.+/) { |line| "# #{line}" }.save!
 
 ## Collecting files
 
@@ -62,14 +62,14 @@ Like the namesake of this module, we often want to dig deeper and investigate fu
     Sherlock['**/*.tex']
     # => Sherlock::Collection::Files
     
-    Sherlock['**/*.tex'].collect(/% TODO:(.+)/) 
+    Sherlock['**/*.tex'].lines(/% TODO:(.+)/) 
     # => Sherlock::Collection::Lines
     
 This returns a collection of lines that matched the given argument. 
 
 To get the matched part of the line, you can use the matches method:
   
-    Sherlock['**/*.tex'].collect(/% TODO:(.+)/).matches
+    Sherlock['**/*.tex'].lines(/% TODO:(.+)/).matches
     # => [['improve headline'], ['write conclusion'], ['get an A']]
     
 ## Modifying lines
@@ -78,7 +78,7 @@ Finally, you want to be able to not only use your findings, but change the conte
 
 You can using the gsub and save! method:
     
-    Sherlock['**/*.tex'].collect(/% URGENT:/).gsub('URGENT', 'TODO').save!
+    Sherlock['**/*.tex'].lines(/% URGENT:/).gsub('URGENT', 'TODO').save!
     
 gsub and save! work both on collections of lines as well as individual line objects!
 
