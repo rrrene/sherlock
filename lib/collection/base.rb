@@ -30,7 +30,8 @@ module Sherlock
       alias filter select_items_matching
   
       def [](value, *args)
-        if [String, Regexp, Array, Hash].include?(value.class) #value.is_a?(Regexp)
+        case value
+        when String, Regexp, Array, Hash #value.is_a?(Regexp)
           filter(value, *args)
         else
           super(value)
