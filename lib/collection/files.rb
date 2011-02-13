@@ -22,7 +22,8 @@ module Sherlock
         super(opts[:arr] || Dir[opts[:glob]], opts)
       end
   
-      # Returns all the lines matching the given pattern.
+      # Returns a Lines collection with all lines containing the
+      # given content / matching the given pattern.
       def collect_lines_matching(pattern, &block)
         pattern = [pattern].flatten
         lines = Lines.new
@@ -40,7 +41,7 @@ module Sherlock
       alias collect collect_lines_matching
       alias lines collect_lines_matching
       
-      # Returns a FileCollection with all files containing the
+      # Returns a Files collection with all files containing the
       # given content / matching the given pattern.
       def select_files_containing(pattern)
         pattern = [pattern].flatten
@@ -49,7 +50,7 @@ module Sherlock
       end
       alias containing select_files_containing
 
-      # Returns a FileCollection with all files not containing the
+      # Returns a Files collection with all files not containing the
       # given content / matching the given pattern.
       def select_files_not_containing(pattern)
         pattern = [pattern].flatten
