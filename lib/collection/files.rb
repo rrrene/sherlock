@@ -12,6 +12,8 @@ module Sherlock
           opts[:arr] = glob_or_regex
         when String
           opts[:glob] = glob_or_regex
+        when Symbol
+          opts[:glob] = "**/*.#{glob_or_regex}"
         when Regexp
           if opts[:only]
             raise "Cannot use regexp and :only-option at the same time."
@@ -19,7 +21,7 @@ module Sherlock
             opts[:only] = glob_or_regex
           end
         end
-        opts = {:glob => '*'}.merge(opts)
+        opts = {:glob => '**/*'}.merge(opts)
         super(opts[:arr] || Dir[opts[:glob]], opts)
       end
   

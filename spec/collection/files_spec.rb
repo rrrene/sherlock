@@ -15,6 +15,19 @@ describe Sherlock::Collection::Files do
       filtered_by_method = text_files.filter(:only => /lines/)
       filtered_by_initialize.should == filtered_by_method
     end
+    
+    it "should accept a glob (String) as first argument" do
+      Sherlock['**/*.txt'].should == Dir['**/*.txt']
+    end
+    
+    it "should accept a Symbol as first argument" do
+      files = Sherlock[:txt]
+      files.should == Sherlock["**/*.txt"]
+    end
+    
+    it "should accept a Regexp as first argument" do
+      Sherlock[/\.txt$/].should == Sherlock['**/*.txt']
+    end    
   end
   
   describe "#lines" do
