@@ -5,13 +5,14 @@ module Sherlock
     class Files < Base
   
       def initialize(glob_or_regex, opts = {})
-        if glob_or_regex.is_a?(Hash)
+        case glob_or_regex
+        when Hash
           opts = glob_or_regex
-        elsif glob_or_regex.is_a?(Array)
+        when Array
           opts[:arr] = glob_or_regex
-        elsif glob_or_regex.is_a?(String)
+        when String
           opts[:glob] = glob_or_regex
-        elsif glob_or_regex.is_a?(Regexp)
+        when Regexp
           if opts[:only]
             raise "Cannot use regexp and :only-option at the same time."
           else
@@ -44,20 +45,24 @@ module Sherlock
       # Returns a Files collection with all files containing the
       # given content / matching the given pattern.
       def select_files_containing(pattern)
-        pattern = [pattern].flatten
-        arr = select { |f| matching?(File.read(f), pattern) }
-        new(arr)
+        select_files(pattern, :select)
       end
       alias containing select_files_containing
 
       # Returns a Files collection with all files not containing the
       # given content / matching the given pattern.
       def select_files_not_containing(pattern)
-        pattern = [pattern].flatten
-        arr = select { |f| !matching?(File.read(f), pattern) }
-        new(arr)
+        select_files(pattern, :reject)
       end
       alias not_containing select_files_not_containing
+
+      private
+
+      def select_files(pattern, method)
+        pattern = [pattern].flatten
+        arr = send(method) { |f| matching?(File.read(f), pattern) }
+        new(arr)
+      end
     end
   end
 end

@@ -30,7 +30,8 @@ module Sherlock
       alias filter select_items_matching
   
       def [](value, *args)
-        if [String, Regexp, Array, Hash].include?(value.class) #value.is_a?(Regexp)
+        case value
+        when String, Regexp, Array, Hash #value.is_a?(Regexp)
           filter(value, *args)
         else
           super(value)
@@ -62,10 +63,7 @@ module Sherlock
       end
 
       def matching?(str, string_or_regexp_or_array)
-        [string_or_regexp_or_array].flatten.each { |pattern|
-          return true if str.match(pattern)
-        }
-        false
+        [string_or_regexp_or_array].flatten.detect { |pattern| str.match(pattern) }
       end
     
       def new(*args)
