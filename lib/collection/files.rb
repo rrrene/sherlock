@@ -41,8 +41,6 @@ module Sherlock
         }
         lines
       end
-      alias old_collect collect
-      alias collect collect_lines_matching
       alias lines collect_lines_matching
       
       # Returns a Files collection with all files containing the
