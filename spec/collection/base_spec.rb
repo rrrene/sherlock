@@ -136,7 +136,5 @@ describe Sherlock::Collection::Base do
     end
   end
   
-  # TODO: tests für #& und #| schreiben
-  # TODO: testen, dass filter(), und first() und containing und so alle String, Regexp sowie [String/Regexp] nehmen
-  
+  # TODO: tests for #& und #|
 end

@@ -22,7 +22,8 @@ module Sherlock
           end
         end
         opts = {:glob => '**/*'}.merge(opts)
-        super(opts[:arr] || Dir[opts[:glob]], opts)
+        arr = opts[:arr] || Dir[opts[:glob]]
+        super(arr, opts)
       end
   
       # Returns a Lines collection with all lines containing the
