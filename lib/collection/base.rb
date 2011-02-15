@@ -28,10 +28,11 @@ module Sherlock
         new(arr, opts)
       end
       alias filter select_items_matching
-  
+      
+      # Filters the collection, if the first argument is an Array, Regexp, String or Hash.
       def [](value, *args)
         case value
-        when String, Regexp, Array, Hash #value.is_a?(Regexp)
+        when String, Regexp, Array, Hash
           filter(value, *args)
         else
           super(value)
