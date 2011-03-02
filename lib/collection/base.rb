@@ -63,8 +63,8 @@ module Sherlock
         arr
       end
 
-      def matching?(str, string_or_regexp_or_array)
-        [string_or_regexp_or_array].flatten.detect { |pattern| str.match(pattern) }
+      def matching?(obj, string_or_regexp_or_array)
+        [string_or_regexp_or_array].flatten.detect { |pattern| obj.match(pattern) }
       end
     
       def new(*args)
