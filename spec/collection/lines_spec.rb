@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Sherlock::Collection::Files do
   def numbered_lines
-    text_files(:only => /lines/).collect(/^.*(\d+\.)(.+)/)
+    text_files(:only => /lines/).lines(/^.*(\d+\.)(.+)/)
   end
   
   describe "#initialize" do

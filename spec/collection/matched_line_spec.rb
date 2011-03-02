@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Sherlock::Collection::Files do
   def some_line
-    lines = text_files.collect('Zeile')
+    lines = text_files.lines('Zeile')
     lines[0]
   end
   
