@@ -28,7 +28,7 @@ module Sherlock
   
       # Returns a Lines collection with all lines containing the
       # given content / matching the given pattern.
-      def collect_lines_matching(pattern, &block)
+      def collect_lines_matching(pattern = //, &block)
         pattern = [pattern].flatten
         lines = Lines.new
         self.each { |f|
@@ -42,6 +42,14 @@ module Sherlock
         lines
       end
       alias lines collect_lines_matching
+      
+      def not_blank_lines
+        lines(/\S+/)
+      end
+      
+      def blank_lines
+        lines(/^\s+$/)
+      end
       
       # Returns a Files collection with all files containing the
       # given content / matching the given pattern.
