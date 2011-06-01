@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
   s.description = "A library for filtering lists of files and performing actions on their content."
 
   s.files = Dir[ 'lib/**/*', 'spec/**/*']
-  s.has_rdoc = false
   s.require_path = 'lib'
   s.requirements << 'none'
 
