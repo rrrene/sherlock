@@ -1,1 +1,1 @@
-rvm ree@sherlock --create
+rvm 1.9.3@sherlock --create

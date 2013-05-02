@@ -1,5 +1,5 @@
 $:.unshift('lib')
-require 'sherlock'
+require 'sherlock/version'
 
 Gem::Specification.new do |s|
   s.author = "René Föhring"
@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/rrrene/sherlock"
 
   s.name = 'sherlock'
-  s.version = Sherlock::VERSION::STRING
+  s.version = Sherlock::VERSION::STRING.dup
   s.platform = Gem::Platform::RUBY
   s.summary = "A library for filtering lists of files and performing actions on their content."
   s.description = "A library for filtering lists of files and performing actions on their content."

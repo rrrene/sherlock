@@ -18,9 +18,8 @@ describe Sherlock::Collection::Files do
       new_line = line.gsub(/^(.*)/, 'X \1')
       new_line[0..0].should == 'X'
       new_line.changed?.should == true
-      new_line[0..0].should != 'X'
+      line[0..0].should_not == 'X'
       line.changed?.should == false
     end
   end
-  
 end

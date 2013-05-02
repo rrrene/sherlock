@@ -3,7 +3,7 @@
 # TODO: Output-Methoden für File- und Line-Collections, Tabellen, success & failure inkl. optionaler Colorierung.
 
 %w(collection core_ext latex version).each do |_module|
-  require File.join(File.dirname(__FILE__), _module)
+  require File.join(File.dirname(__FILE__), "sherlock", _module)
 end
 
 module Sherlock
