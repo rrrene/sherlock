@@ -1,5 +1,10 @@
+PATH
+  remote: .
+  specs:
+    sherlock (0.2.0)
+
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     diff-lcs (1.1.2)
     rspec (2.5.0)
@@ -16,3 +21,4 @@ PLATFORMS
 
 DEPENDENCIES
   rspec
+  sherlock!
